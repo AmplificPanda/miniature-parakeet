@@ -14,7 +14,64 @@ Why Python?
 - Simple, readable syntax, easy to learn and use, perfect for scripting
 - Includes a number of libraries providing a massive amount of built-in functionality (through imports)
 
+The ATT&CK Framework
 ![](thematrix.png)
+
+The Shield Framework:
+![](shieldmatrix.png)
+
+MITRE Shield was developed by MITRE to promote active defense.
+Taking actions to gain some control over an attacker's actions on defenders networks.
+
+Terms: 
+- Tactic: the tactical goal at a particular stage of a cyberattack or a goal in active defense
+- Technique: A mechanism by which an attacker can achieve the goal outlined in a particular tactic
+    - Sub-technique: a method for carrying out a particular technique
+- Procedure: A specific implementation of a particular technique
+or sub-technique. 
+
+For e.g. Brute Force is a tactic of credential access. We may have multiple techniques for achieving a technique (sub-techniques): password guessing, cracking, spraying and credential stuffing. 
+Procedures = Different tools, particular malware variants etc.
+
+
+
+S1: Q&A's
+Top Level in MITRE ATT&CK + Tactic
+John the Ripper = Example of Procedure (as it is a tool)
+PRE ATT&CK Matrix = Reconnaissance & Resource Development
+False: A cyberthreat actor will use at least one technique from every tactic during a cyberattack.
+
+**Section 1: MITRE PRE-ATT&CK**
+
+The first stage of PRE involves gathering information from a variety of sources. Some of the techniques used are:
+- Active Scanning
+- Gather Victim host, identity, network and organization information
+- Phishing for information
+- Search closed sources
+- Open technical databases
+- Search open websites/domains
+- Search victim-owned websites
+
+The second stage of PRE involves the attacker developing or aquiring the tools needed to perform their attack:
+- Acquire infrastructure
+- Compromise Infrastructure
+- Develop capabilities
+- Establish accounts
+- Obtain capabilities
+
+Resource Development not covered by Python as it is dependent heavily on attacker's goals and resources. Thus, we will look at two techniques of reconnaissance tactic of PRE-ATT&CK:
+- Active Scanning:: Network scanning
+- Search open technical databases: DNS Exploration
+
+
+
+
+
+
+
+
+
+
 
 
 
