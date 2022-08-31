@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from struct import pack
 from scapy.all import *
 
@@ -46,10 +47,10 @@ o.show() #we can see that the dport has changed to port 8080
 #Create a bare-bones TCP IP packet
 print("\n bare-bones TCP IP packet")
 y = IP(dst="8.8.8.8")/TCP(dport=53)
-y.show()
+y.show() #show contents of created packet
 
 #we can also modify it further
 print("\n Modified packet where we have wrapped it into a UDP wrapped as DNS packet:")
 y=IP(dst="8.8.8.8")/UDP(dport=53)/DNS()
 #y[TCP].dport = 35 #change the port
-y.show()
+y.show() #show packet contents of the packet we have just modified.
