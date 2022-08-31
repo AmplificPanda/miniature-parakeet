@@ -1,4 +1,4 @@
-#!/usr/bin/python 
+#!/usr/bin/python3 
 #the above specifies which interpreter will be used to run the script.
 from scapy.all import *
 #--------------------------------
