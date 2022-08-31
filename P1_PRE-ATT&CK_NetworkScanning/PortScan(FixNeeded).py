@@ -8,7 +8,7 @@ from scapy.all import *
 #--------------------------------
 
 #ports we are going to look at
-ports = [25,80,53,443,445,8080,8443] #common well known ports
+ports = [25,80,53, 123, 443,445,8080,8443] #common well known ports
 
 #perform a syn and look for corresponding ack packet..half connection
 #iterate over the specified ports above and inform us which ports are open or closed.
@@ -22,7 +22,7 @@ def synScanner(host):
     #verbose=0 : sr provides a lot of info, we just want the results of sr (packets answered & not)
     #closed ports will be set to noreply.
     
-    reply,noreply = sr(IP(dst=host)/TCP(sport=5000, dport=ports,flags="S"), timeout=2, verbose=0)
+    reply,noreply = sr(IP(dst=host)/TCP(dport=ports,flags="S"), timeout=2, verbose=0)
     
      #output the responses
     print("\n ", reply)
@@ -49,9 +49,12 @@ def DnsScan(host):
     #send and receive the packet, build packet...UDP layer inside IP layer, port 53 for DNS...
     #there are no flags in UDP...add additonal DNS layer, build valid DNS packet, rd = 1 request,
     #DNSquery = google.com
-    ans, unans = sr(IP(dst=host)/UDP(sport=5555,dport=53)/DNS(rd=1,qd=DNSQR(qname="google.com")),timeout=2, verbose=0)
+    ans, unans = sr(IP(dst=host)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname="google.com")),timeout=2, verbose=0)
     if ans:
         print("DNS server detected at %s" %host)
 
 synScanner(host="8.8.8.8")
 DnsScan(host="8.8.8.8")
+
+#Note that telnet is very unsecure as it is unencrypted text messages (blocked by many things)
+#Telnet runs on port 23

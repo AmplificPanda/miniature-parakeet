@@ -77,7 +77,15 @@ Network scanning is one method of learning a target network architecture.
   - Scanning IP Blocks
   - Vulnerability Scanning
 
-  
+**Open Technical Databases: (Tactic)**
+- Open-source intelligence(OSINT) is a trove of useful data regarding an organization and its systems.
+Examples include:
+- WHOIS: records include data about owners of websites, system admins, etc
+- DNS: maps domain names to IP addresses
+- CDNs: store cached content for an organization's websites.
+
+
+
 
 
 
