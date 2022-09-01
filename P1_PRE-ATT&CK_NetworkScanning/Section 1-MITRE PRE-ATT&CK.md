@@ -1,5 +1,5 @@
 # miniature-parakeet
-Personal learning as part of the Introduction for Cybersecurity Course by INFOSEC
+Personal learning as part of the Introduction to Python for Cybersecurity Course by INFOSEC
 Please note: All notes are written for personal purposes only and may not be beneficial to others.
 
 The three objectives:
