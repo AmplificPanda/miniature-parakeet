@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import os, glob
+from unicodedata import name
 
 #Basic loop to go from 1-10
 print("\n For loop: \n")
@@ -42,3 +43,33 @@ for num in range(1,101):
     else:
         print(num)
 
+#basic comprehension
+print("\n\n Basic list comprehension")
+the_list=[1,2,3,4,5,6,7,8,9,10]
+#within one line it will iterate through the list above, square it and store it in squares[]
+squares=[]
+squares = [num*num for num in the_list]
+for item in squares:
+    print(item)
+
+#basic OOP
+class Knight(object):
+    def __init__(self,name):
+        self.name = name
+    def reveal(self):
+        print("I am a Knight, and my name is {}".format(self.name))
+    
+class SuperKnight(Knight):
+    def __init__(self, name, namehero):
+        super(SuperKnight,self).__init__(name)
+        self.namehero = namehero
+
+    def reveal(self):
+        super(SuperKnight,self).reveal()
+        print("And I am a SuperKnight and my name is {}".format(self.namehero))
+
+avian = Knight("Avian")
+avian.reveal()
+
+ori = SuperKnight("ORI", "Knight of Ren")
+ori.reveal()
