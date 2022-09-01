@@ -84,7 +84,7 @@ Examples include:
 - DNS: maps domain names to IP addresses
 - CDNs: store cached content for an organization's websites.
 
-
+https://attack.mitre.org/ for viewing the full MITRE framework for ATT&CK.
 
 
 
