@@ -1,9 +1,14 @@
 #!/usr/bin/python3 
 #the above specifies which interpreter will be used to run the script.
+
+from distutils.log import error
 from scapy.all import *
+import pyfiglet #for fancy graphics
+import sys #handling exceptions
+import socket #use for port, internet and more
+from datetime import datetime #for banner to print date and time
+
 #--------------------------------
-#Using Scapy library for a Network scan
-#Reworked from prior programme which did not work.
 #--------------------------------
 
 #----------------------------------
@@ -23,25 +28,31 @@ from scapy.all import *
 #THE TCP THREE WAY HANDSHAKE IS AS FOLLOWS:
 # Client sends SYN to server, server sends SYN-ACK, client sends ACK
 
-#Get user inputs
+#Create banner
+ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
+print(ascii_banner)
+
+#allow user to specify target IP
+target = input(str("Enter target IP: "))
+
+#now run through every port possible on the target IP
 try:
-    host = (input("Please enter a host address: "))
-    #get list of ports as input, split using , character
-    portString =  (list(input("Please enter the ports to check: ").split(",")))
-    #print(ports) //testing the input
+    for port in range(1,65535):
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        socket.setdefaulttimeout(0.1)
 
-    #convert the ports into integers...map function takes whats in port, and converts to int but stores as map obj
-    #maps the input string to ints
-    temp = map(int,portString)
-    #to store as list, use list operator on it
-    ports = list(temp)
-    
-    print("Scanning...")
-    ans, unans = sr(IP(dst=host)/TCP(dport=ports,flags="S"),verbose=0, timeout=2)
-    print(ans)
+        #return the open ports
+        results = s.connect_ex((target,port))
 
-    for (s,r) in ans:
-        print("{} open".format(s[TCP].dport))
+        if results == 0:
+            #if 0 that means connection success
+            print("{} is open".format(port))
+        s.close() #close the socket
 
-except(ValueError, TypeError, RuntimeError, NameError):
-    print("An error occurred...")
+except KeyboardInterrupt:
+    print("Keyboard interupt, exiting now...")
+    sys.exit()
+
+except socket.error:
+    print("host not responding")
+    sys.exit()
