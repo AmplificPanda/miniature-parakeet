@@ -82,3 +82,5 @@ except KeyboardInterrupt:
 except socket.error:
     print("host not responding :(")
     sys.exit()
+
+#NOTE: Threading utilization needed to make this application much faster
