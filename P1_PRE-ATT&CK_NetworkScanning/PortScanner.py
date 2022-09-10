@@ -1,6 +1,7 @@
 #!/usr/bin/python3 
 #the above specifies which interpreter will be used to run the script.
 #from scapy.all import *
+from tracemalloc import start
 import pyfiglet #for fancy graphics
 import sys #handling exceptions
 import socket #use for port, internet and more
@@ -34,14 +35,23 @@ print(ascii_banner)
 try:
     #allow user to specify target IP
     host = input(str("Enter target IP: "))
+    print("-------------------")
+
+    startPort = input("enter starting port: ")
+    endPort = input("enter ending port: ")
+    
+    startPort = int(startPort)
+    endPort = int(endPort)
     
     #show status to user
     print("Program running scan on {}".format(host))
+    print("Program executing scan from ports {} to {}".format(startPort,endPort))
+
     print("Scanning begun at: " + str(datetime.now()))
     startTime=datetime.now()
 
     #go through every port possible for the target IP
-    for port in range(1,65535):
+    for port in range(startPort,endPort):
         #set up a socket and set its timeout to 0.1
         s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         socket.setdefaulttimeout(0.1)
